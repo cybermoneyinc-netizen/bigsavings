@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$750 Walmart Gift Card - Walmart Rewards</title>
+  <meta name="description" content="Answer a few questions and qualify for a $750 Walmart Gift Card. Shop groceries, electronics, home goods and more. Fast, free, and easy!">
+  <meta name="author" content="Walmart Rewards">
+  <meta property="og:title" content="$750 Walmart Gift Card - Walmart Rewards">
+  <meta property="og:description" content="Answer a few questions and qualify for a $750 Walmart Gift Card. Shop groceries, electronics, home goods and more!">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/v221.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@Walmart">
+  <meta name="twitter:image" content="images/v221.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --background: hsl(220, 14%, 96%);
+      --foreground: hsl(213, 72%, 14%);
+      --card: hsl(0, 0%, 100%);
+      --card-foreground: hsl(213, 72%, 14%);
+      --primary: hsl(210, 100%, 43%);
+      --primary-foreground: hsl(0, 0%, 100%);
+      --secondary: hsl(213, 72%, 14%);
+      --secondary-foreground: hsl(0, 0%, 100%);
+      --muted-foreground: hsl(220, 9%, 46%);
+      --accent: hsl(40, 96%, 53%);
+      --accent-foreground: hsl(213, 72%, 14%);
+      --border: hsl(220, 13%, 91%);
+      --walmart-yellow: hsl(40, 96%, 53%);
+      --walmart-dark-blue: hsl(213, 72%, 14%);
+    }
+    
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      min-height: 100vh;
+    }
+    
+    /* Header */
+    .header {
+      background: var(--secondary);
+      padding: 1rem;
+    }
+    
+    .header-content {
+      max-width: 72rem;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      width: 2rem;
+      height: 2rem;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .logo-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+      fill: var(--secondary);
+    }
+    
+    .logo-text {
+      color: var(--primary-foreground);
+      font-weight: 700;
+      font-size: 1.125rem;
+    }
+    
+    .nav {
+      display: none;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .nav { display: flex; }
+      .mobile-menu { display: none; }
+    }
+    
+    .nav-link {
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      color: var(--primary-foreground);
+    }
+    
+    .nav-link.active {
+      background: var(--primary);
+      color: var(--primary-foreground);
+    }
+    
+    .nav-link:not(.active):hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .mobile-menu {
+      color: var(--primary-foreground);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    
+    /* Sections */
+    .section { display: none; }
+    .section.active { display: block; }
+    
+    /* Hero Section */
+    .hero {
+      padding: 3rem 1rem;
+      text-align: center;
+    }
+    
+    .hero-container {
+      max-width: 48rem;
+      margin: 0 auto;
+    }
+    
+    .hero h1 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 2rem;
+      line-height: 1.3;
+    }
+    
+    @media (min-width: 768px) {
+      .hero h1 { font-size: 2.5rem; }
+    }
+    
+    .hero-image {
+      margin-bottom: 2rem;
+    }
+    
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      max-height: 280px;
+      margin: 0 auto;
+    }
+    
+    .hero-description {
+      color: var(--muted-foreground);
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      max-width: 42rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    
+    .time-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    
+    .time-indicator svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    .walmart-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: var(--primary);
+      color: var(--primary-foreground);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+    }
+    
+    .walmart-btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 25px rgba(0, 113, 220, 0.35);
+    }
+    
+    .walmart-btn svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+    
+    /* Quiz Section */
+    .quiz {
+      padding: 2rem 1rem;
+    }
+    
+    .quiz-container {
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    
+    .timer {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    
+    .timer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(21, 51, 89, 0.1);
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--secondary);
+    }
+    
+    .timer-badge .time {
+      font-weight: 700;
+      color: var(--primary);
+    }
+    
+    .progress-container {
+      margin-bottom: 2rem;
+    }
+    
+    .progress-bar {
+      height: 0.75rem;
+      border-radius: 9999px;
+      background: var(--border);
+      overflow: hidden;
+    }
+    
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 9999px;
+      background: var(--primary);
+      transition: width 0.5s ease-out;
+    }
+    
+    .progress-text {
+      text-align: center;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+    
+    .progress-text .current {
+      color: var(--primary);
+    }
+    
+    .question-card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+    
+    .question-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    
+    .option-btn {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      text-align: left;
+      border-radius: 0.75rem;
+      border: 2px solid var(--border);
+      background: var(--card);
+      font-weight: 500;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    
+    .option-btn:hover {
+      border-color: var(--primary);
+      background: rgba(0, 113, 220, 0.05);
+    }
+    
+    .option-btn.selected {
+      border-color: var(--primary);
+      background: rgba(0, 113, 220, 0.1);
+    }
+    
+    /* Results Section */
+    .results {
+      padding: 3rem 1rem;
+    }
+    
+    .results-container {
+      max-width: 42rem;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    .success-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .success-header svg {
+      width: 2.5rem;
+      height: 2.5rem;
+      color: #22c55e;
+    }
+    
+    .success-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    
+    @media (min-width: 768px) {
+      .success-header h1 { font-size: 1.875rem; }
+    }
+    
+    .results-description {
+      color: var(--muted-foreground);
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    
+    .results-image {
+      margin-bottom: 2rem;
+    }
+    
+    .results-image img {
+      max-width: 100%;
+      height: auto;
+      max-height: 220px;
+      margin: 0 auto;
+    }
+    
+    .claim-link {
+      display: block;
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      text-decoration: none;
+    }
+    
+    .claim-link:hover {
+      text-decoration: underline;
+    }
+    
+    .instructions {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+    
+    .instructions ol {
+      list-style: decimal inside;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    
+    .instructions li {
+      color: var(--secondary);
+      line-height: 1.7;
+    }
+    
+    .instructions strong {
+      font-weight: 700;
+    }
+    
+    .continue-btn {
+      display: inline-block;
+      padding: 1.25rem 3rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, var(--walmart-yellow), hsl(40, 100%, 45%));
+      color: var(--walmart-dark-blue);
+      box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .continue-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <span class="logo-text">Walmart Rewards</span>
+      </div>
+      <nav class="nav">
+        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link active">HOME</a>
+        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link">HOW IT WORKS</a>
+        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link">FAQ</a>
+      </nav>
+      <button class="mobile-menu">
+        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="hero" class="section active hero">
+    <div class="hero-container">
+      <h1>Answer a Few Questions For a<br>$750 Walmart Gift Card!</h1>
+      <div class="hero-image">
+        <img src="images/v221.png" alt="$750 Walmart Gift Card with groceries and products">
+      </div>
+      <p class="hero-description">
+        Imagine stocking up on groceries, electronics, home goods, and more with a $750 Walmart Gift Card. 
+        Take our quick quiz to see if you qualify! It's fast, free, and easy. Start now and get your reward!
+      </p>
+      <div class="time-indicator">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 6v6l4 2"/></svg>
+        <span>Takes Only 2 Minutes!</span>
+      </div>
+      <button id="startQuizBtn" class="walmart-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="2"/><path stroke-width="2" d="M12 6v6l4 2"/></svg>
+        Start Quiz
+      </button>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="section quiz">
+    <div class="quiz-container">
+      <div class="timer">
+        <div class="timer-badge">
+          Your place is secured for <span class="time" id="timerDisplay">05m 00s</span>
+        </div>
+      </div>
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-bar-fill" id="progressBar" style="width: 20%;"></div>
+        </div>
+        <div class="progress-text">
+          <span class="current" id="currentQuestion">1</span>/<span id="totalQuestions">5</span>
+        </div>
+      </div>
+      <div class="question-card">
+        <h2 id="questionText">Do you or anyone in your household shop at Walmart?</h2>
+        <div class="options" id="optionsContainer">
+          <!-- Options will be inserted by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section id="results" class="section results">
+    <div class="results-container">
+      <div class="success-header">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke="#22c55e" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        <h1>Congratulations! You've Qualified!</h1>
+      </div>
+      <p class="results-description">
+        You have completed the process and can now proceed to claim your WALMART gift card! Follow the steps below:
+      </p>
+      <div class="results-image">
+        <img src="images/v221.png" alt="$750 Walmart Gift Card">
+      </div>
+      <a href="https://trk.cmclk.com/cf/click/1" class="claim-link">
+        Groceries, home goods, and more — claim your $750 Walmart Gift Card and get it all!
+      </a>
+      <div class="instructions">
+        <ol>
+          <li>Confirm your delivery details (click the <strong>"CONTINUE"</strong> button): Confirm where the exclusive <strong>WALMART gift card</strong> should be delivered.</li>
+          <li><strong>To finalize your entry, you must complete the required steps.</strong> This includes confirming your details and answering a few questions to verify your participation.</li>
+          <li>Prepare for the reveal: Your <strong>gift card</strong> will be delivered to your home. Delivery is guaranteed within 5 days after the completion of the process.</li>
+          <li>Don't forget to <strong>confirm</strong> your participation by email.</li>
+        </ol>
+      </div>
+      <a href="https://trk.cmclk.com/cf/click/1" class="continue-btn">Continue</a>
+    </div>
+  </section>
+
+  <script>
+    // Quiz data
+    const questions = [
+      { question: "Do you or anyone in your household shop at Walmart?", options: ["Yes", "No", "Sometimes"] },
+      { question: "How often do you shop at Walmart?", options: ["Weekly", "Monthly", "A few times a year", "Rarely"] },
+      { question: "What do you typically purchase at Walmart?", options: ["Groceries", "Electronics", "Clothing", "Home goods", "All of the above"] },
+      { question: "How would you prefer to receive your gift card?", options: ["Physical card by mail", "Digital e-gift card", "Either is fine"] },
+      { question: "Are you 18 years or older and a US resident?", options: ["Yes", "No"] }
+    ];
+
+    let currentQ = 0;
+    let timeLeft = 5 * 60;
+    let timerInterval;
+
+    // DOM elements
+    const heroSection = document.getElementById('hero');
+    const quizSection = document.getElementById('quiz');
+    const resultsSection = document.getElementById('results');
+    const startBtn = document.getElementById('startQuizBtn');
+    const timerDisplay = document.getElementById('timerDisplay');
+    const progressBar = document.getElementById('progressBar');
+    const currentQuestionEl = document.getElementById('currentQuestion');
+    const questionText = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+
+    // Format time
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = seconds % 60;
+      return `${mins.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
+    }
+
+    // Render question
+    function renderQuestion() {
+      const q = questions[currentQ];
+      questionText.textContent = q.question;
+      currentQuestionEl.textContent = currentQ + 1;
+      progressBar.style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+      
+      optionsContainer.innerHTML = '';
+      q.options.forEach((option, i) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = option;
+        btn.onclick = () => selectOption(btn, option);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // Select option
+    function selectOption(btn, option) {
+      document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      
+      setTimeout(() => {
+        if (currentQ < questions.length - 1) {
+          currentQ++;
+          renderQuestion();
+        } else {
+          showResults();
+        }
+      }, 500);
+    }
+
+    // Show results
+    function showResults() {
+      clearInterval(timerInterval);
+      quizSection.classList.remove('active');
+      resultsSection.classList.add('active');
+    }
+
+    // Start quiz
+    function startQuiz() {
+      heroSection.classList.remove('active');
+      quizSection.classList.add('active');
+      currentQ = 0;
+      timeLeft = 5 * 60;
+      renderQuestion();
+      
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = formatTime(timeLeft);
+        if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+        }
+      }, 1000);
+    }
+
+    // Event listeners
+    startBtn.addEventListener('click', startQuiz);
+  </script>
+
+<script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+o;a.startsWith(s)||i.searchParams.set(t,a);return i.searchParams.append(n,document.referrer),i.searchParams.append(e,location.href),i.searchParams.append("lpt",document.title),i.searchParams.append("t",(new Date).getTime().toString()),i.toString()}(r,a),s=document.createElement("script"),l=document.scripts[0];s.async=1,s.src=o,s.onerror=function(){!function(){for(var n=function(n,t){var e=document.links[n];u().test(decodeURI(e.href))&&setTimeout((function(){e&&e.setAttribute("href",function(n){var t=n.match(u());if(t){var e=(t.groups||{}).original_link;return e?e.slice(0,-1):n}return n}(decodeURI(e.href)))}))},t=0,e=document.links.length;t<e;t++)n(t)}()},null===(i=l.parentNode)||void 0===i||i.insertBefore(s,l)}(r,a)})))}("".concat("/cf/tags","/").concat(new URL(window.location.href).searchParams.get("cftmid")||"{{__CONTAINER_ID__}}"),(m=new URL(window.location.href).searchParams.get(t),f=new RegExp("(^| )".concat("cf_cpid","=([^;]+)")),p=(h=document.cookie.match(f))&&h.pop()||null,m||p||"{{__CAMPAIGN_ID__}}"))}();</script>
+</body>
+</html>
