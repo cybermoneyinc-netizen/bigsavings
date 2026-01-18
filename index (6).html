@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Savings Tips | Smart Money Advice for Everyday Savers</title>
+    <meta name="description" content="Discover practical savings tips, budgeting strategies, and smart money advice to help you save more and spend smarter.">
+    <meta name="keywords" content="savings tips, budgeting, money saving, personal finance, frugal living">
+    <link rel="canonical" href="https://best-savings-tips.com">
+    <meta property="og:title" content="Best Savings Tips | Smart Money Advice">
+    <meta property="og:description" content="Practical savings tips and budgeting strategies to help you save more.">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">💰 Best Savings Tips</a>
+            <nav class="nav">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="terms.html" class="nav-link">Terms</a>
+                <a href="privacy.html" class="nav-link">Privacy</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Smart Money Tips for Everyday Savers</h1>
+                <p class="hero-subtitle">Practical advice to help you save more and spend smarter</p>
+            </div>
+        </section>
+
+        <section class="email-signup">
+            <div class="container">
+                <div class="signup-box">
+                    <div class="signup-icon">✉️</div>
+                    <h2>Get Weekly Savings Tips</h2>
+                    <p>Join thousands of smart savers. Free tips delivered to your inbox every week.</p>
+                    <form class="signup-form" id="emailForm">
+                        <input type="email" placeholder="Enter your email" required class="email-input">
+                        <button type="submit" class="btn-primary">Subscribe Free</button>
+                    </form>
+                    <p class="signup-note">No spam, ever. Unsubscribe anytime.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="articles">
+            <div class="container">
+                <h2 class="section-title">Latest Savings Tips</h2>
+                <div class="articles-grid">
+                    <a href="article-1.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=400&h=250&fit=crop" alt="50/30/20 Budget Rule" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Budgeting</span>
+                            <h3 class="article-title">The 50/30/20 Budget Rule: A Simple Way to Manage Your Money</h3>
+                            <p class="article-excerpt">Learn how to divide your income into needs, wants, and savings for better financial health.</p>
+                        </div>
+                    </a>
+
+                    <a href="article-2.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=250&fit=crop" alt="Grocery Savings" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Shopping</span>
+                            <h3 class="article-title">10 Proven Ways to Cut Your Grocery Bill in Half</h3>
+                            <p class="article-excerpt">Smart shopping strategies that can save you hundreds every month on food.</p>
+                        </div>
+                    </a>
+
+                    <a href="article-3.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop" alt="Emergency Fund" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Savings</span>
+                            <h3 class="article-title">How to Build an Emergency Fund from Scratch</h3>
+                            <p class="article-excerpt">Step-by-step guide to creating your financial safety net, even on a tight budget.</p>
+                        </div>
+                    </a>
+
+                    <a href="article-4.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=400&h=250&fit=crop" alt="Subscription Audit" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Lifestyle</span>
+                            <h3 class="article-title">The Subscription Audit: Find Hidden Money Leaks</h3>
+                            <p class="article-excerpt">How to identify and cancel subscriptions you don't need or use anymore.</p>
+                        </div>
+                    </a>
+
+                    <a href="article-5.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop" alt="Energy Bills" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Home</span>
+                            <h3 class="article-title">15 Easy Ways to Lower Your Energy Bills This Month</h3>
+                            <p class="article-excerpt">Simple changes that can reduce your utility costs without sacrificing comfort.</p>
+                        </div>
+                    </a>
+
+                    <a href="article-6.html" class="article-card">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=250&fit=crop" alt="Side Hustles" class="article-image">
+                        <div class="article-content">
+                            <span class="article-category">Income</span>
+                            <h3 class="article-title">Best Side Hustles to Boost Your Savings in 2024</h3>
+                            <p class="article-excerpt">Flexible ways to earn extra money that fit around your existing schedule.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; 2024 Best Savings Tips. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="terms.html">Terms</a>
+                <a href="privacy.html">Privacy</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('emailForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                this.innerHTML = '<div class="success-message">✓ Thanks for subscribing! Check your inbox.</div>';
+            }
+        });
+    </script>
+</body>
+</html>
