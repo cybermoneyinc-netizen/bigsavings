@@ -24,7 +24,7 @@
       --foreground: hsl(213, 72%, 14%);
       --card: hsl(0, 0%, 100%);
       --card-foreground: hsl(213, 72%, 14%);
-      --primary: hsl(210, 100%, 43%);
+      --primary: #0071dc; /* Walmart Blue */
       --primary-foreground: hsl(0, 0%, 100%);
       --secondary: hsl(213, 72%, 14%);
       --secondary-foreground: hsl(0, 0%, 100%);
@@ -32,8 +32,8 @@
       --accent: hsl(40, 96%, 53%);
       --accent-foreground: hsl(213, 72%, 14%);
       --border: hsl(220, 13%, 91%);
-      --walmart-yellow: hsl(40, 96%, 53%);
-      --walmart-dark-blue: hsl(213, 72%, 14%);
+      --walmart-yellow: #ffc220;
+      --walmart-dark-blue: #002d58;
     }
     
     body {
@@ -43,91 +43,134 @@
       min-height: 100vh;
       padding-bottom: 40px;
     }
-    
-    /* Header */
-    .header {
-      background: var(--secondary);
-      padding: 1rem;
+
+    /* --- NEW WALMART HEADER STYLES --- */
+    .wm-header {
+        background-color: var(--primary);
+        color: white;
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    /* Top Row: Menu, Title, Cart */
+    .wm-top-bar {
+        display: flex;
+        align-items: center;
+        padding: 8px 12px;
+        gap: 4px;
+        height: 60px;
+    }
+
+    .wm-menu-btn {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+        margin-right: 4px;
+    }
+
+    /* Title Text */
+    .wm-header-title {
+        flex: 1; /* Takes up remaining space */
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+        margin-left: 0px; /* Reduced margin since logo is gone */
+        display: flex;
+        align-items: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 2px;
+    }
+
+    .wm-cart-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+        min-width: 44px;
+        margin-left: auto;
+    }
+
+    .wm-cart-icon-wrapper {
+        position: relative;
+    }
+
+    .wm-cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background-color: var(--walmart-yellow);
+        color: #000;
+        font-size: 11px;
+        font-weight: 700;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--primary);
+    }
+
+    .wm-cart-price {
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 2px;
+    }
+
+    /* Bottom Row: Pickup/Delivery & Location */
+    .wm-bottom-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--primary);
+        padding: 8px 16px 12px 16px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .wm-pickup-toggle {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: white;
+        border-radius: 999px;
+        padding: 4px 4px 4px 4px;
+        color: var(--primary);
+        width: 32px;
+        height: 32px;
+        justify-content: center;
+    }
+
+    .wm-pickup-text {
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
     
-    .header-content {
-      max-width: 72rem;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .wm-location-text {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 50%;
     }
+
+    /* --- END HEADER STYLES --- */
     
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .logo-icon {
-      width: 2rem;
-      height: 2rem;
-      background: var(--accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .logo-icon svg {
-      width: 1.25rem;
-      height: 1.25rem;
-      fill: var(--secondary);
-    }
-    
-    .logo-text {
-      color: var(--primary-foreground);
-      font-weight: 700;
-      font-size: 1.125rem;
-    }
-    
-    .nav {
-      display: none;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    @media (min-width: 768px) {
-      .nav { display: flex; }
-      .mobile-menu { display: none; }
-    }
-    
-    .nav-link {
-      padding: 0.5rem 1.25rem;
-      border-radius: 9999px;
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.2s;
-      color: var(--primary-foreground);
-    }
-    
-    .nav-link.active {
-      background: var(--primary);
-      color: var(--primary-foreground);
-    }
-    
-    .nav-link:not(.active):hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-    
-    .mobile-menu {
-      color: var(--primary-foreground);
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    
-    /* Sections */
+    /* Existing Page Styles (Preserved) */
     .section { display: none; }
     .section.active { display: block; }
     
-    /* Hero Section */
     .hero {
       padding: 3rem 1rem;
       text-align: center;
@@ -546,24 +589,52 @@
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="header-content">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+  <header class="wm-header">
+    <div class="wm-top-bar">
+        <button class="wm-menu-btn">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+
+        <div class="wm-header-title">
+            Walmart Rewards
         </div>
-        <span class="logo-text">Walmart Rewards</span>
-      </div>
-      <nav class="nav">
-        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link active">HOME</a>
-        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link">HOW IT WORKS</a>
-        <a href="https://trk.cmclk.com/cf/click/1" class="nav-link">FAQ</a>
-      </nav>
-      <button class="mobile-menu">
-        <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-        </svg>
-      </button>
+
+        <div class="wm-cart-container">
+            <div class="wm-cart-icon-wrapper">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <div class="wm-cart-badge">0</div>
+            </div>
+            <div class="wm-cart-price">$0.00</div>
+        </div>
+    </div>
+
+    <div class="wm-bottom-bar">
+        <div class="wm-pickup-text">
+            <div class="wm-pickup-toggle">
+               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            Pickup or delivery?
+        </div>
+        
+        <div class="wm-location-text">
+            <span id="userLocationText">Sacramento, 95829</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </div>
     </div>
   </header>
 
@@ -843,4 +914,28 @@
     startBtn.addEventListener('click', startQuiz);
   </script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const locationSpan = document.getElementById("userLocationText");
+        
+        // Fetch location from a free IP Geolocation API
+        fetch('https://ipapi.co/json/')
+            .then(response => response.json())
+            .then(data => {
+                if (data.city && data.postal) {
+                    locationSpan.textContent = `${data.city}, ${data.postal}`;
+                } else if (data.city) {
+                    locationSpan.textContent = `${data.city}, ${data.region_code}`;
+                }
+            })
+            .catch(error => {
+                console.log("Location fetch failed, using default.");
+                // Fallback is already in the HTML (Sacramento, 95829)
+            });
+    });
+  </script>
+
 <script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+
+</script>
+</body>
+</html>
