@@ -41,6 +41,7 @@
       background: var(--background);
       color: var(--foreground);
       min-height: 100vh;
+      padding-bottom: 40px;
     }
     
     /* Header */
@@ -143,118 +144,6 @@
       color: var(--secondary);
       margin-bottom: 2rem;
       line-height: 1.3;
-    }
-    /* COMMENT SECTION STYLES */
-    .fb-comments-wrapper {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background-color: #ffffff;
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 10px;
-        color: #050505;
-        border-top: 1px solid #e1e1e1;
-    }
-
-    .fb-comment-header {
-        font-weight: 600;
-        color: #65676b;
-        margin-bottom: 15px;
-        border-bottom: 1px solid #ced0d4;
-        padding-bottom: 10px;
-    }
-
-    .fb-comment {
-        display: flex;
-        margin-bottom: 12px;
-        align-items: flex-start;
-    }
-
-    .fb-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        background-color: #ddd;
-        margin-right: 8px;
-        flex-shrink: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        color: white;
-        font-size: 14px;
-    }
-
-    /* Random colored avatars for realism */
-    .c1 { background-color: #1877f2; }
-    .c2 { background-color: #42b72a; }
-    .c3 { background-color: #f7b928; }
-    .c4 { background-color: #fa3e3e; }
-    .c5 { background-color: #8b9dc3; }
-
-    .fb-content-group {
-        display: flex;
-        flex-direction: column;
-        max-width: 90%;
-    }
-
-    .fb-bubble {
-        background-color: #f0f2f5;
-        border-radius: 18px;
-        padding: 8px 12px;
-        position: relative;
-        display: inline-block;
-    }
-
-    .fb-author {
-        font-weight: 600;
-        font-size: 13px;
-        color: #050505;
-        display: block;
-        margin-bottom: 2px;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-    .fb-author:hover {
-        text-decoration: underline;
-    }
-
-    .fb-text {
-        font-size: 14px;
-        line-height: 1.3;
-        color: #050505;
-        margin: 0;
-    }
-
-    .fb-actions {
-        margin-left: 12px;
-        margin-top: 3px;
-        font-size: 12px;
-        color: #65676b;
-    }
-
-    .fb-actions span {
-        margin-right: 10px;
-        cursor: pointer;
-        font-weight: 600;
-    }
-
-    .fb-actions span:hover {
-        text-decoration: underline;
-    }
-
-    .fb-actions .time {
-        font-weight: 400;
-        cursor: default;
-        text-decoration: none !important;
-    }
-
-    /* Nested Replies */
-    .fb-reply-thread {
-        margin-left: 45px; /* Indent the reply */
-        margin-top: 8px;
-        border-left: 2px solid #f0f2f5;
-        padding-left: 8px;
     }
     
     @media (min-width: 768px) {
@@ -537,10 +426,126 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(255, 193, 7, 0.5);
     }
+
+    /* COMMENT SECTION STYLES */
+    .fb-comments-wrapper {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 10px;
+        color: #050505;
+        border-top: 1px solid #e1e1e1;
+    }
+
+    .fb-comment-header {
+        font-weight: 600;
+        color: #65676b;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ced0d4;
+        padding-bottom: 10px;
+    }
+
+    .fb-comment {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: flex-start;
+    }
+
+    .fb-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #ddd;
+        margin-right: 8px;
+        flex-shrink: 0;
+        overflow: hidden; /* Ensures image stays circular */
+    }
+
+    .fb-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .fb-content-group {
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .fb-bubble {
+        background-color: #f0f2f5;
+        border-radius: 18px;
+        padding: 8px 12px;
+        position: relative;
+        display: inline-block;
+    }
+
+    /* NEW CLASS FOR IMAGE IN COMMENT */
+    .fb-comment-image {
+        display: block;
+        max-width: 100%;
+        border-radius: 12px;
+        margin-top: 8px;
+        width: auto;
+        height: auto;
+    }
+
+    .fb-author {
+        font-weight: 600;
+        font-size: 13px;
+        color: #050505;
+        display: block;
+        margin-bottom: 2px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .fb-author:hover {
+        text-decoration: underline;
+    }
+
+    .fb-text {
+        font-size: 14px;
+        line-height: 1.3;
+        color: #050505;
+        margin: 0;
+    }
+
+    .fb-actions {
+        margin-left: 12px;
+        margin-top: 3px;
+        font-size: 12px;
+        color: #65676b;
+    }
+
+    .fb-actions span {
+        margin-right: 10px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .fb-actions span:hover {
+        text-decoration: underline;
+    }
+
+    .fb-actions .time {
+        font-weight: 400;
+        cursor: default;
+        text-decoration: none !important;
+    }
+
+    /* Nested Replies */
+    .fb-reply-thread {
+        margin-left: 45px; /* Indent the reply */
+        margin-top: 8px;
+        border-left: 2px solid #f0f2f5;
+        padding-left: 8px;
+    }
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header class="header">
     <div class="header-content">
       <div class="logo">
@@ -562,7 +567,6 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section id="hero" class="section active hero">
     <div class="hero-container">
       <h1>Answer a Few Questions For a<br>$1000 Walmart Gift Card!</h1>
@@ -584,7 +588,6 @@
     </div>
   </section>
 
-  <!-- Quiz Section -->
   <section id="quiz" class="section quiz">
     <div class="quiz-container">
       <div class="timer">
@@ -603,13 +606,11 @@
       <div class="question-card">
         <h2 id="questionText">Do you or anyone in your household shop at Walmart?</h2>
         <div class="options" id="optionsContainer">
-          <!-- Options will be inserted by JS -->
-        </div>
+          </div>
       </div>
     </div>
   </section>
 
-  <!-- Results Section -->
   <section id="results" class="section results">
     <div class="results-container">
       <div class="success-header">
@@ -620,7 +621,7 @@
         You have completed the process and can now proceed to claim your WALMART gift card! Follow the steps below:
       </p>
       <div class="results-image">
-        <img src="images/v221.png" alt="$1000 Walmart Gift Card">
+        <img src="images/v221.png" alt="$750 Walmart Gift Card">
       </div>
       <a href="https://trk.cmclk.com/cf/click/1" class="claim-link">
         Groceries, home goods, and more — claim your $1000 Walmart Gift Card and get it all!
@@ -636,15 +637,19 @@
       <a href="https://trk.cmclk.com/cf/click/1" class="continue-btn">Continue</a>
     </div>
   </section>
-  <div class="fb-comments-wrapper">
+
+<div class="fb-comments-wrapper">
     <div class="fb-comment-header">Top Comments</div>
 
     <div class="fb-comment">
-        <div class="fb-avatar c1">S</div>
+        <div class="fb-avatar">
+            <img src="./images/w11.jpg" alt="Sarah M.">
+        </div>
         <div class="fb-content-group">
             <div class="fb-bubble">
                 <a class="fb-author">Sarah M.</a>
                 <p class="fb-text">FINALLY!!! someone is helping us with these crazy prices. My husband got laid off last month and it has been really hard for us. I'm so glad Walmart is helping us out. I just got my voucher!</p>
+                <img src="./images/dd1.jpeg" class="fb-comment-image" alt="Voucher proof">
             </div>
             <div class="fb-actions">
                 <span>Like</span><span>Reply</span><span class="time">2h</span>
@@ -653,7 +658,9 @@
     </div>
 
     <div class="fb-comment">
-        <div class="fb-avatar c2">J</div>
+        <div class="fb-avatar">
+            <img src="./images/w12.jpg" alt="Jason K.">
+        </div>
         <div class="fb-content-group">
             <div class="fb-bubble">
                 <a class="fb-author">Jason K.</a>
@@ -667,7 +674,9 @@
     
     <div class="fb-reply-thread">
         <div class="fb-comment">
-            <div class="fb-avatar c1">L</div>
+            <div class="fb-avatar">
+                <img src="./images/w13.jpg" alt="Linda B.">
+            </div>
             <div class="fb-content-group">
                 <div class="fb-bubble">
                     <a class="fb-author">Linda B.</a>
@@ -681,7 +690,9 @@
     </div>
 
     <div class="fb-comment">
-        <div class="fb-avatar c3">M</div>
+        <div class="fb-avatar">
+            <img src="./images/w14.jpg" alt="Mike D.">
+        </div>
         <div class="fb-content-group">
             <div class="fb-bubble">
                 <a class="fb-author">Mike D.</a>
@@ -694,7 +705,9 @@
     </div>
 
     <div class="fb-comment">
-        <div class="fb-avatar c4">R</div>
+        <div class="fb-avatar">
+            <img src="./images/w15.jpg" alt="Robert T.">
+        </div>
         <div class="fb-content-group">
             <div class="fb-bubble">
                 <a class="fb-author">Robert T.</a>
@@ -708,7 +721,9 @@
 
     <div class="fb-reply-thread">
         <div class="fb-comment">
-            <div class="fb-avatar c5">A</div>
+            <div class="fb-avatar">
+                <img src="./images/w16.jpg" alt="Alex P.">
+            </div>
             <div class="fb-content-group">
                 <div class="fb-bubble">
                     <a class="fb-author">Alex P.</a>
@@ -722,7 +737,9 @@
     </div>
 
     <div class="fb-comment">
-        <div class="fb-avatar c2">E</div>
+        <div class="fb-avatar">
+            <img src="./images/w17.jpg" alt="Emily W.">
+        </div>
         <div class="fb-content-group">
             <div class="fb-bubble">
                 <a class="fb-author">Emily W.</a>
@@ -734,8 +751,7 @@
         </div>
     </div>
 </div>
-
-  <script>
+<script>
     // Quiz data
     const questions = [
       { question: "Do you or anyone in your household shop at Walmart?", options: ["Yes", "No", "Sometimes"] },
@@ -827,6 +843,4 @@
     startBtn.addEventListener('click', startQuiz);
   </script>
 
-<script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+o;a.startsWith(s)||i.searchParams.set(t,a);return i.searchParams.append(n,document.referrer),i.searchParams.append(e,location.href),i.searchParams.append("lpt",document.title),i.searchParams.append("t",(new Date).getTime().toString()),i.toString()}(r,a),s=document.createElement("script"),l=document.scripts[0];s.async=1,s.src=o,s.onerror=function(){!function(){for(var n=function(n,t){var e=document.links[n];u().test(decodeURI(e.href))&&setTimeout((function(){e&&e.setAttribute("href",function(n){var t=n.match(u());if(t){var e=(t.groups||{}).original_link;return e?e.slice(0,-1):n}return n}(decodeURI(e.href)))}))},t=0,e=document.links.length;t<e;t++)n(t)}()},null===(i=l.parentNode)||void 0===i||i.insertBefore(s,l)}(r,a)})))}("".concat("/cf/tags","/").concat(new URL(window.location.href).searchParams.get("cftmid")||"{{__CONTAINER_ID__}}"),(m=new URL(window.location.href).searchParams.get(t),f=new RegExp("(^| )".concat("cf_cpid","=([^;]+)")),p=(h=document.cookie.match(f))&&h.pop()||null,m||p||"{{__CAMPAIGN_ID__}}"))}();</script>
-</body>
-</html>
+<script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+
