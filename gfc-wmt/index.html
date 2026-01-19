@@ -144,6 +144,118 @@
       margin-bottom: 2rem;
       line-height: 1.3;
     }
+    /* COMMENT SECTION STYLES */
+    .fb-comments-wrapper {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #ffffff;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 10px;
+        color: #050505;
+        border-top: 1px solid #e1e1e1;
+    }
+
+    .fb-comment-header {
+        font-weight: 600;
+        color: #65676b;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #ced0d4;
+        padding-bottom: 10px;
+    }
+
+    .fb-comment {
+        display: flex;
+        margin-bottom: 12px;
+        align-items: flex-start;
+    }
+
+    .fb-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background-color: #ddd;
+        margin-right: 8px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: white;
+        font-size: 14px;
+    }
+
+    /* Random colored avatars for realism */
+    .c1 { background-color: #1877f2; }
+    .c2 { background-color: #42b72a; }
+    .c3 { background-color: #f7b928; }
+    .c4 { background-color: #fa3e3e; }
+    .c5 { background-color: #8b9dc3; }
+
+    .fb-content-group {
+        display: flex;
+        flex-direction: column;
+        max-width: 90%;
+    }
+
+    .fb-bubble {
+        background-color: #f0f2f5;
+        border-radius: 18px;
+        padding: 8px 12px;
+        position: relative;
+        display: inline-block;
+    }
+
+    .fb-author {
+        font-weight: 600;
+        font-size: 13px;
+        color: #050505;
+        display: block;
+        margin-bottom: 2px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .fb-author:hover {
+        text-decoration: underline;
+    }
+
+    .fb-text {
+        font-size: 14px;
+        line-height: 1.3;
+        color: #050505;
+        margin: 0;
+    }
+
+    .fb-actions {
+        margin-left: 12px;
+        margin-top: 3px;
+        font-size: 12px;
+        color: #65676b;
+    }
+
+    .fb-actions span {
+        margin-right: 10px;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    .fb-actions span:hover {
+        text-decoration: underline;
+    }
+
+    .fb-actions .time {
+        font-weight: 400;
+        cursor: default;
+        text-decoration: none !important;
+    }
+
+    /* Nested Replies */
+    .fb-reply-thread {
+        margin-left: 45px; /* Indent the reply */
+        margin-top: 8px;
+        border-left: 2px solid #f0f2f5;
+        padding-left: 8px;
+    }
     
     @media (min-width: 768px) {
       .hero h1 { font-size: 2.5rem; }
