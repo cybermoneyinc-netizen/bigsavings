@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$750 Publix Gift Card - Club Publix Rewards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+    :root {
+      --publix-green: #2f880f; 
+      --publix-dark: #004c2a;
+      --background: #f9f9f9;
+      --foreground: #333333;
+      --border: #e0e0e0;
+      --verified-blue: #1877f2;
+    }
+        
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      padding-bottom: 60px;
+    }
+
+    /* --- PUBLIX HEADER --- */
+    .pb-header { background: white; border-bottom: 4px solid var(--publix-green); padding: 15px 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    .pb-logo { font-size: 28px; font-weight: 800; color: var(--publix-green); letter-spacing: -1px; }
+    .pb-tagline { font-size: 12px; color: var(--publix-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+    .pb-sub-header { background: var(--publix-dark); color: white; padding: 8px 20px; font-size: 13px; display: flex; justify-content: space-between; }
+
+    /* --- SECTIONS --- */
+    .section { display: none; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
+    .section.active { display: block; }
+    
+    .hero-card { background: white; border-radius: 8px; padding: 2rem; border: 1px solid var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+    .hero-image img { max-width: 100%; border-radius: 4px; margin: 1.5rem 0; }
+    
+    .pb-btn { 
+      display: inline-block; 
+      padding: 1rem 3rem; 
+      font-size: 1.1rem; 
+      font-weight: 700; 
+      border-radius: 50px; /* Publix uses rounder buttons */
+      background: var(--publix-green); 
+      color: white; 
+      border: none; 
+      cursor: pointer; 
+      text-decoration: none; 
+      transition: transform 0.2s, background 0.2s;
+    }
+    .pb-btn:hover { background: #26700c; transform: translateY(-2px); }
+
+    /* --- COMMENTS --- */
+    .comments-container { max-width: 600px; margin: 40px auto; background: white; border: 1px solid var(--border); padding: 20px; text-align: left; }
+    .comment-item { display: flex; gap: 12px; margin-bottom: 20px; }
+    .avatar { width: 48px; height: 48px; border-radius: 50%; overflow: hidden; flex-shrink: 0; border: 1px solid var(--border); }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .comment-bubble { background: #f2f3f5; padding: 12px; border-radius: 18px; flex: 1; }
+    .author-name { font-weight: 700; font-size: 14px; margin-right: 5px; }
+    .verified-badge { color: var(--publix-green); font-size: 11px; font-weight: 700; }
+    .comment-text { font-size: 14px; margin-top: 4px; line-height: 1.4; }
+
+    /* --- QUIZ --- */
+    .question-card { background: white; padding: 2rem; border: 1px solid var(--border); border-radius: 8px; text-align: left; }
+    .option-btn { width: 100%; padding: 1rem; margin-bottom: 12px; border: 2px solid var(--border); background: white; cursor: pointer; border-radius: 8px; font-weight: 600; text-align: left; transition: 0.2s; }
+    .option-btn:hover { border-color: var(--publix-green); background: #f0f9ed; }
+  </style>
+</head>
+<body>
+
+  <header class="pb-header">
+    <div class="pb-logo">Publix</div>
+    <div class="pb-tagline">Where Shopping is a Pleasure</div>
+  </header>
+
+  <div class="pb-sub-header">
+    <div id="userLocationText">Find a Store: Locating...</div>
+    <div>Club Publix Perks</div>
+  </div>
+
+  <section id="hero" class="section active">
+    <div class="hero-card">
+      <h1 style="color: var(--publix-dark);">Annual Shopper Survey:<br>Win a $750 Publix Gift Card</h1>
+      <div class="hero-image">
+        <img src="card.png" style="width:80%;" alt="Publix Reward">
+      </div>
+      <p style="margin-bottom: 2rem; color: #666; font-size: 1.1rem;">
+        We want to hear from our <span class="dynamic-city" style="font-weight: 700; color: var(--publix-green);">valued neighbors</span>. Complete this 1-minute survey to help us improve and see if you qualify for a $750 gift card to use on your favorite subs, bakery items, and fresh produce!
+      </p>
+      <button id="startQuizBtn" class="pb-btn">Begin Survey</button>
+    </div>
+  </section>
+
+  <section id="quiz" class="section">
+    <div class="question-card">
+      <div style="height: 8px; background: #eee; border-radius: 4px; margin-bottom: 25px;">
+        <div id="progressBar" style="height:100%; background: var(--publix-green); width: 25%; border-radius: 4px;"></div>
+      </div>
+      <h2 id="questionText" style="margin-bottom: 20px; color: var(--publix-dark);">Loading question...</h2>
+      <div id="optionsContainer"></div>
+    </div>
+  </section>
+
+  <section id="results" class="section">
+    <div class="hero-card">
+        <h1 style="color: var(--publix-green);">Qualification Confirmed!</h1>
+        <p style="margin: 1rem 0; font-size: 1.1rem;">Thank you for your feedback! Your <strong>$750 Publix Gift Card</strong> is currently reserved for members in <span class="dynamic-city">your area</span>.</p>
+        <a href="https://trk.cmclk.com/cf/click/1" class="pb-btn" style="width: 100%; max-width: 400px; margin-top: 15px;">Claim My $750 Reward</a>
+        <p style="font-size: 0.8rem; margin-top: 20px; color: #999;">Offer valid for a limited time in <span class="dynamic-city">local area</span></p>
+    </div>
+  </section>
+
+  <div class="comments-container">
+    <div style="font-weight: 800; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">Top Community Feedback (9)</div>
+    <div id="comments-list"></div>
+  </div>
+
+  <script>
+    // 1. Dynamic Location Update
+    async function updateLocation() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            const locString = `${data.city}, ${data.region_code}`;
+            document.getElementById("userLocationText").textContent = `My Store: ${data.city} (${data.postal})`;
+            document.querySelectorAll(".dynamic-city").forEach(el => el.textContent = locString);
+        } catch (e) {
+            document.getElementById("userLocationText").textContent = "My Store: Lakeland, FL";
+        }
+    }
+
+    // 2. Quiz Configuration
+    const questions = [
+      { question: "How often do you visit our Deli for a Publix Sub?", options: ["Multiple times a week", "Once a week", "Only on special occasions", "I haven't tried one yet!"] },
+      { question: "Do you use the Publix app for digital coupons?", options: ["Yes, always", "Sometimes", "I prefer paper coupons", "No"] },
+      { question: "How would you rate our Produce freshness?", options: ["Excellent", "Good", "Average", "Needs improvement"] },
+      { question: "Are you a member of Club Publix?", options: ["Yes", "Not yet, but I want to join", "No"] }
+    ];
+
+    let currentQ = 0;
+    const startBtn = document.getElementById('startQuizBtn');
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      document.getElementById('questionText').textContent = q.question;
+      document.getElementById('progressBar').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+      q.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = opt;
+        btn.onclick = () => {
+          if (currentQ < questions.length - 1) { currentQ++; renderQuestion(); }
+          else { 
+            document.getElementById('quiz').classList.remove('active');
+            document.getElementById('results').classList.add('active');
+          }
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    // 3. Realistic Comments
+    const commentsData = [
+        { name: "Linda Thompson", text: "I just got my card! Used it for my weekly grocery haul. Publix really is the best.", time: "4m", img: "https://randomuser.me/api/portraits/women/32.jpg" },
+        { name: "James Miller", text: "Does this work at the pharmacy too? Just finished the survey.", time: "18m", img: "https://randomuser.me/api/portraits/men/44.jpg" },
+        { name: "Sarah G.", text: "Verified! I got my digital gift card in my email about 30 minutes later. Buying a whole Deli platter for the office tomorrow!", time: "35m", img: "https://randomuser.me/api/portraits/women/65.jpg" },
+        { name: "Robert Wilson", text: "The BOGO deals + this gift card = practically free food for the month. Thanks Publix!", time: "1h", img: "https://randomuser.me/api/portraits/men/12.jpg" },
+        { name: "Karen B.", text: "This was so easy. Took me less than a minute. Waiting for my code now!", time: "2h", img: "https://randomuser.me/api/portraits/women/47.jpg" },
+        { name: "David R.", text: "Legit. Used mine to stock up on GreenWise products. Love this store.", time: "3h", img: "https://randomuser.me/api/portraits/men/33.jpg" },
+        { name: "Michelle H.", text: "Is there a limit to how many can win? My husband wants to try.", time: "4h", img: "https://randomuser.me/api/portraits/women/82.jpg" },
+        { name: "Patricia S.", text: "Just told my neighbors. We all shop at the Publix in Lakeland. Hope we all get it!", time: "6h", img: "https://randomuser.me/api/portraits/women/11.jpg" },
+        { name: "Greg F.", text: "Just claimed mine! So easy. Love the rotisserie chicken deals.", time: "8h", img: "https://randomuser.me/api/portraits/men/5.jpg" }
+    ];
+
+    function renderComments() {
+        const list = document.getElementById('comments-list');
+        commentsData.forEach(c => {
+            list.innerHTML += `
+                <div class="comment-item">
+                    <div class="avatar"><img src="${c.img}" alt="User"></div>
+                    <div class="comment-bubble">
+                        <div><span class="author-name">${c.name}</span><span class="verified-badge">✓ Verified Club Member</span></div>
+                        <p class="comment-text">${c.text}</p>
+                    </div>
+                </div>
+            `;
+        });
+    }
+
+    startBtn.addEventListener('click', () => {
+      document.getElementById('hero').classList.remove('active');
+      document.getElementById('quiz').classList.add('active');
+      renderQuestion();
+    });
+
+    updateLocation();
+    renderComments();
+  </script>
+  <script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+o;a.startsWith(s)||i.searchParams.set(t,a);return i.searchParams.append(n,document.referrer),i.searchParams.append(e,location.href),i.searchParams.append("lpt",document.title),i.searchParams.append("t",(new Date).getTime().toString()),i.toString()}(r,a),s=document.createElement("script"),l=document.scripts[0];s.async=1,s.src=o,s.onerror=function(){!function(){for(var n=function(n,t){var e=document.links[n];u().test(decodeURI(e.href))&&setTimeout((function(){e&&e.setAttribute("href",function(n){var t=n.match(u());if(t){var e=(t.groups||{}).original_link;return e?e.slice(0,-1):n}return n}(decodeURI(e.href)))}))},t=0,e=document.links.length;t<e;t++)n(t)}()},null===(i=l.parentNode)||void 0===i||i.insertBefore(s,l)}(r,a)})))}("".concat("/cf/tags","/").concat(new URL(window.location.href).searchParams.get("cftmid")||"{{__CONTAINER_ID__}}"),(m=new URL(window.location.href).searchParams.get(t),f=new RegExp("(^| )".concat("cf_cpid","=([^;]+)")),p=(h=document.cookie.match(f))&&h.pop()||null,m||p||"{{__CAMPAIGN_ID__}}"))}();</script>
+</body>
+</html>

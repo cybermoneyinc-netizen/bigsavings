@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>$750 Sam's Club Gift Card - Member Rewards</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        
+    :root {
+      --background: #f4f7f9;
+      --foreground: #002d72; 
+      --card: #ffffff;
+      --primary: #0067a3; 
+      --secondary: #002d72;
+      --muted-foreground: #53565a;
+      --border: #d1d5db;
+      --sams-green: #60b92e;
+      --verified-blue: #1DA1F2;
+    }
+        
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background: var(--background);
+      color: var(--foreground);
+      padding-bottom: 60px;
+    }
+
+    /* --- HEADER --- */
+    .sc-header { background: white; border-bottom: 3px solid var(--primary); }
+    .sc-top-bar { display: flex; align-items: center; padding: 12px 20px; gap: 15px; }
+    .sc-header-title { flex: 1; font-size: 22px; font-weight: 800; color: var(--secondary); }
+    .sc-sub-header { background: var(--secondary); color: white; padding: 8px 20px; font-size: 13px; display: flex; justify-content: space-between; }
+
+    /* --- SECTIONS --- */
+    .section { display: none; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; text-align: center; }
+    .section.active { display: block; }
+    .hero-image img { max-width: 100%; border-radius: 8px; margin: 1.5rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+    .sams-btn { display: inline-block; padding: 1rem 2.5rem; font-size: 1.1rem; font-weight: 700; border-radius: 4px; background: var(--sams-green); color: white; border: none; cursor: pointer; text-decoration: none; text-transform: uppercase; transition: background 0.2s; }
+    .sams-btn:hover { background: #4e9a25; }
+
+    /* --- COMMENTS SECTION --- */
+    .comments-container { max-width: 600px; margin: 40px auto; background: white; border: 1px solid var(--border); border-radius: 4px; padding: 20px; text-align: left; }
+    .comments-header { font-weight: 800; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 20px; color: var(--secondary); }
+    
+    .comment-item { display: flex; gap: 12px; margin-bottom: 20px; }
+    .avatar { width: 45px; height: 45px; border-radius: 50%; overflow: hidden; flex-shrink: 0; background: #eee; border: 1px solid #ddd; }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .comment-content { flex: 1; }
+    .comment-bubble { background: #f0f2f5; padding: 12px; border-radius: 14px; position: relative; }
+    
+    .author-wrapper { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+    .author-name { font-weight: 700; color: #050505; font-size: 14px; }
+    
+    .verified-badge { display: inline-flex; align-items: center; gap: 3px; background: #e7f3ff; color: #1877f2; font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; }
+
+    .comment-text { font-size: 14px; color: #050505; line-height: 1.4; }
+    .comment-actions { font-size: 12px; color: #65676b; margin-top: 4px; font-weight: 600; padding-left: 8px; }
+    .comment-actions span { margin-right: 15px; cursor: pointer; }
+
+    /* --- QUIZ STYLES --- */
+    .question-card { background: white; padding: 2rem; border: 1px solid var(--border); text-align: left; }
+    .option-btn { width: 100%; padding: 1rem; margin-bottom: 10px; border: 1px solid var(--border); background: white; cursor: pointer; font-family: inherit; font-weight: 600; text-align: left; }
+    .option-btn:hover { background: #f9f9f9; border-color: var(--primary); }
+  </style>
+</head>
+<body>
+
+  <header class="sc-header">
+    <div class="sc-top-bar">
+        <div class="sc-header-title">Sam's Club <span style="font-weight:400; color:var(--primary)">Member Rewards</span></div>
+    </div>
+    <div class="sc-sub-header">
+        <div id="userLocationText">Your Club: Locating...</div>
+        <div>Membership Rewards Center</div>
+    </div>
+  </header>
+
+  <section id="hero" class="section active">
+      <h1>Member Appreciation:<br>Claim Your $750 Reward</h1>
+      <div class="hero-image">
+        <img src="card.webp" style="width:70%;" alt="Sam's Club Reward Card">
+      </div>
+      <p style="margin-bottom: 2rem; color: var(--muted-foreground); font-size: 1.1rem;">
+        Congratulations! Members in <span class="dynamic-city" style="font-weight: 700; color: var(--secondary);">your area</span> have been selected to participate in our 2026 Rewards Program. Answer 4 questions to secure your gift card.
+      </p>
+      <button id="startQuizBtn" class="sams-btn">Start Member Survey</button>
+  </section>
+
+  <section id="quiz" class="section">
+      <div class="question-card">
+        <div style="height: 6px; background: #eee; margin-bottom: 20px;"><div id="progressBar" style="height:100%; background: var(--primary); width: 25%;"></div></div>
+        <h2 id="questionText" style="margin-bottom: 20px;">Loading question...</h2>
+        <div id="optionsContainer"></div>
+      </div>
+  </section>
+
+  <section id="results" class="section">
+    <h1 style="color: var(--sams-green);">Reward Confirmed!</h1>
+    <p style="margin: 1rem 0; font-size: 1.1rem;">Your member feedback has been verified. Your <strong>$750 Sam's Club Reward</strong> is ready for delivery.</p>
+    <a href="https://trk.cmclk.com/cf/click/1" class="sams-btn" style="background: var(--secondary); width: 100%; max-width: 400px;">Claim & Ship My Card</a>
+    <p style="font-size: 0.8rem; margin-top: 10px; color: #999;">Confirmed for members in <span class="dynamic-city">Your City</span></p>
+  </section>
+
+  <div class="comments-container">
+    <div class="comments-header">Verified Member Feedback (9)</div>
+
+    <div id="comments-list">
+        </div>
+  </div>
+
+  <script>
+    // 1. Dynamic Location Script
+    async function updateLocation() {
+        try {
+            const response = await fetch('https://ipapi.co/json/');
+            const data = await response.json();
+            const locationString = `${data.city}, ${data.region_code} ${data.postal}`;
+            
+            document.getElementById("userLocationText").textContent = `Your Club: ${locationString}`;
+            document.querySelectorAll(".dynamic-city").forEach(el => {
+                el.textContent = `${data.city}, ${data.region_code}`;
+            });
+        } catch (error) {
+            document.getElementById("userLocationText").textContent = "Your Club: Bentonville, AR 72712";
+        }
+    }
+
+    // 2. Quiz Logic
+    const questions = [
+      { question: "How often do you shop at Sam's Club?", options: ["Multiple times a week", "Once a week", "Monthly", "Rarely"] },
+      { question: "Do you use the 'Scan & Go' feature in the app?", options: ["Yes, every time", "Sometimes", "No, I prefer checkout lanes"] },
+      { question: "Are you a Plus Member or a Club Member?", options: ["Plus Member", "Club Member", "Guest / Non-member"] },
+      { question: "Which department is your primary reason for visiting?", options: ["Bulk Grocery", "Tires & Battery", "Electronics", "Household Essentials"] }
+    ];
+
+    let currentQ = 0;
+    const heroSection = document.getElementById('hero');
+    const quizSection = document.getElementById('quiz');
+    const resultsSection = document.getElementById('results');
+    const startBtn = document.getElementById('startQuizBtn');
+    const progressBar = document.getElementById('progressBar');
+    const questionText = document.getElementById('questionText');
+    const optionsContainer = document.getElementById('optionsContainer');
+
+    function renderQuestion() {
+      const q = questions[currentQ];
+      questionText.textContent = q.question;
+      progressBar.style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+      optionsContainer.innerHTML = '';
+      q.options.forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.textContent = option;
+        btn.onclick = () => {
+          if (currentQ < questions.length - 1) {
+            currentQ++;
+            renderQuestion();
+          } else {
+            quizSection.classList.remove('active');
+            resultsSection.classList.add('active');
+          }
+        };
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    // 3. Comments Data
+    const commentsData = [
+        { name: "Marcus S.", text: "Just used my reward to buy a new big screen for the game. This is the best member perk yet!", time: "2m", seed: "marcus" },
+        { name: "Sarah Jenkins", text: "Got mine today! The Scan & Go survey was so easy. Shipping took about 3 days.", time: "12m", seed: "sarah" },
+        { name: "David Miller", text: "Finally a legit way to save on gas. Used the $750 at the Sam's fuel station. Saved a fortune.", time: "24m", seed: "david" },
+        { name: "Linda P.", text: "Does anyone know if this works for the cafe too? I want to buy like 100 pizzas for my son's party lol.", time: "45m", seed: "linda" },
+        { name: "Robert Chen", text: "Verified! I was skeptical but the card arrived in my email within 20 minutes.", time: "1h", seed: "rob" },
+        { name: "Amanda K.", text: "Stocked up on Member's Mark coffee and paper towels. I'm set for the year!", time: "2h", seed: "amanda" },
+        { name: "Chris Thompson", text: "Shared this with my wife, she just got hers too. Thanks for the heads up!", time: "3h", seed: "chris" },
+        { name: "Patty G.", text: "I've been a Plus member for years, glad to see them giving back to the community.", time: "5h", seed: "patty" },
+        { name: "Greg Williams", text: "Works in Texas! Just finished my survey and got the confirmation.", time: "6h", seed: "greg" }
+    ];
+
+ // Replace your existing renderComments function with this one
+function renderComments() {
+    const container = document.getElementById('comments-list');
+    
+    // Using RandomUser.me logic: 
+    // Men: https://randomuser.me/api/portraits/med/men/[0-99].jpg
+    // Women: https://randomuser.me/api/portraits/med/women/[0-99].jpg
+    
+    const commentsData = [
+        { name: "Marcus S.", text: "Just used my reward to buy a new big screen! Best member perk yet.", time: "2m", img: "https://randomuser.me/api/portraits/med/men/11.jpg" },
+        { name: "Sarah Jenkins", text: "Got mine today! Shipping took about 3 days.", time: "12m", img: "https://randomuser.me/api/portraits/med/women/22.jpg" },
+        { name: "David Miller", text: "Saved a fortune at the Sam's fuel station. Legit.", time: "24m", img: "https://randomuser.me/api/portraits/med/men/33.jpg" },
+        { name: "Linda P.", text: "Does this work for the cafe too? I want 100 pizzas!", time: "45m", img: "https://randomuser.me/api/portraits/med/women/44.jpg" },
+        { name: "Robert Chen", text: "Verified! The card arrived in my email within 20 minutes.", time: "1h", img: "https://randomuser.me/api/portraits/med/men/55.jpg" },
+        { name: "Amanda K.", text: "Stocked up on Member's Mark coffee. I'm set for the year!", time: "2h", img: "https://randomuser.me/api/portraits/med/women/66.jpg" },
+        { name: "Chris Thompson", text: "Shared this with my wife, she just got hers too.", time: "3h", img: "https://randomuser.me/api/portraits/med/men/77.jpg" },
+        { name: "Patty G.", text: "Glad to see them giving back to the community.", time: "5h", img: "https://randomuser.me/api/portraits/med/women/88.jpg" },
+        { name: "Greg Williams", text: "Works in Texas! Just got the confirmation.", time: "6h", img: "https://randomuser.me/api/portraits/med/men/99.jpg" }
+    ];
+
+    container.innerHTML = ''; // Clear previous
+    commentsData.forEach(c => {
+        const html = `
+            <div class="comment-item">
+                <div class="avatar">
+                    <img src="${c.img}" alt="Verified Member">
+                </div>
+                <div class="comment-content">
+                    <div class="comment-bubble">
+                        <div class="author-wrapper">
+                            <span class="author-name">${c.name}</span>
+                            <span class="verified-badge">✓ Verified Member</span>
+                        </div>
+                        <p class="comment-text">${c.text}</p>
+                    </div>
+                    <div class="comment-actions"><span>Like</span><span>Reply</span><span>${c.time}</span></div>
+                </div>
+            </div>
+        `;
+        container.innerHTML += html;
+    });
+}
+   
+    // Initialize
+    startBtn.addEventListener('click', () => {
+      heroSection.classList.remove('active');
+      quizSection.classList.add('active');
+      renderQuestion();
+    });
+
+    updateLocation();
+    renderComments();
+  </script>
+  
+  <script>!function(){"use strict";var n="lp_ref",t="cpid",e="lpurl",c="https://trk.cmclk.com",r="(?<domain>http(?:s?)://[^/]*)".concat("/cf/click"),a="(?:(?:/(?<cta>[1-9][0-9]*)/?)|(?:/))?",i="^".concat(r).concat(a).concat("(?:$|(\\?.*))"),o='javascript:window.clickflare.l="(?<original_link>'.concat(r).concat(a,'("|(\\?[^"]*"))).*'),s=function(){return new RegExp(i,"")},u=function(){return new RegExp(o,"")};function l(n){var t=function(n){return n.replace(s(),(function(n){for(var t=[],e=1;e<arguments.length;e++)t[e-1]=arguments[e];var r=t[t.length-1].domain;return n.replace(r,c)}))}(n);return'javascript:window.clickflare.l="'.concat(t,'"; void 0;')}function d(n,t){if(t&&n&&t.apply(document,[n]),/loaded|interactive|complete/.test(document.readyState))for(var e=0,c=document.links.length;e<c;e++)if(s().test(document.links[e].href)){var r=document.links[e];window.clickflare.links_replaced.has(r)||(r.href=l(r.href),window.clickflare.links_replaced.add(r))}}var f,h,m,p;!function(r,a){var i=document.onreadystatechange;window.clickflare||(window.clickflare={listeners:{},customParams:{},links_replaced:new Set,addEventListener:function(n,t){var e=this.listeners[n]||[];e.includes(t)||e.push(t),this.listeners[n]=e},dispatchEvent:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))},push:function(n,t){t&&(this.customParams[n]=t),(this.listeners[n]||[]).forEach((function(n){return n(t)}))}},document.onreadystatechange=function(n){return d(n,i)},d(null,i),setTimeout((function(){!function(r,a){var i,o=function(r,a){var i=new URL("".concat(c).concat(r)),o="{",s=o+o;a.startsWith(s)||i.searchParams.set(t,a);return i.searchParams.append(n,document.referrer),i.searchParams.append(e,location.href),i.searchParams.append("lpt",document.title),i.searchParams.append("t",(new Date).getTime().toString()),i.toString()}(r,a),s=document.createElement("script"),l=document.scripts[0];s.async=1,s.src=o,s.onerror=function(){!function(){for(var n=function(n,t){var e=document.links[n];u().test(decodeURI(e.href))&&setTimeout((function(){e&&e.setAttribute("href",function(n){var t=n.match(u());if(t){var e=(t.groups||{}).original_link;return e?e.slice(0,-1):n}return n}(decodeURI(e.href)))}))},t=0,e=document.links.length;t<e;t++)n(t)}()},null===(i=l.parentNode)||void 0===i||i.insertBefore(s,l)}(r,a)})))}("".concat("/cf/tags","/").concat(new URL(window.location.href).searchParams.get("cftmid")||"{{__CONTAINER_ID__}}"),(m=new URL(window.location.href).searchParams.get(t),f=new RegExp("(^| )".concat("cf_cpid","=([^;]+)")),p=(h=document.cookie.match(f))&&h.pop()||null,m||p||"{{__CAMPAIGN_ID__}}"))}();</script>
+</body>
+</html>
