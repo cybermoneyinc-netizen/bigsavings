@@ -18,13 +18,16 @@
         document.getElementById("userLocationText").textContent = `Store: ${data.city} Area`; 
         document.querySelectorAll(".dynamic-city").forEach(el => el.textContent = data.city); 
         
-        // ZIP Code Logic
         const zip = data.postal || "Local";
         document.getElementById("zip-display").textContent = "Zip: " + zip;
         
-        // Scarcity Logic: seeded by Zip so it stays consistent for the user
-        const seed = zip !== "Local" ? parseInt(zip.toString().substring(0,2)) : 35;
-        const left = 30 + (seed % 15);
+        // FIXED SCARCITY LOGIC: Converts alphanumeric zip to a number safely
+        let zipValue = 0;
+        for (let i = 0; i < zip.length; i++) {
+            zipValue += zip.charCodeAt(i);
+        }
+        const left = 32 + (zipValue % 12); // Always results in a number between 32 and 44
+        
         document.getElementById("scarcity-num").textContent = left;
         setTimeout(() => { document.getElementById("scarcity-fill").style.width = (left/50*100) + '%'; }, 500);
 
