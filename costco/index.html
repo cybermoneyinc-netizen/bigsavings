@@ -39,6 +39,54 @@
     .author-name { font-weight: 700; font-size: 14px; color: var(--costco-blue); }
     .verified-badge { color: #60b92e; font-size: 11px; font-weight: 800; margin-left: 5px; }
     .option-btn { width: 100%; padding: 1rem; margin-bottom: 12px; border: 1px solid var(--costco-blue); background: white; cursor: pointer; font-weight: 700; color: var(--costco-blue); text-align: left; }
+
+
+ .steps-container {
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .steps-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .steps-header {
+    font-size: 1.25rem; /* Slightly larger */
+    font-weight: 800;    /* Extra bold */
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem auto 2rem auto;
+    max-width: 280px; 
+    text-align: left;
+  }
+
+  .steps-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    font-size: 1.05rem;
+  }
+
+  /* The Green Checkmark */
+  .steps-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #28a745; 
+    font-weight: 900;
+    font-size: 1.3rem;
+  }
+
   </style>
 </head>
 <body>
@@ -64,13 +112,35 @@
     </div>
   </section>
 
-  <section id="results" class="section">
-    <div class="card">
-        <h1 style="color: var(--costco-blue);">Verification Complete!</h1>
-        <p style="margin: 1.5rem 0;">Your <strong>$750 Costco Shop Card</strong> is ready for a resident in <span class="dynamic-city">your area</span>.</p>
-        <a href="https://trk.cmclk.com/cf/click/1" class="btn">Claim My Shop Card</a>
+<section id="results" class="section">
+  <div class="card" style="text-align: center; padding: 2.5rem 1.5rem; border: 1px solid #ddd; border-top: 8px solid #0056b3; border-radius: 8px; font-family: sans-serif;">
+    
+    <h1 style="color: #0056b3; margin-bottom: 1rem; font-size: 1.8rem;">Verification Complete!</h1>
+    
+    <p style="margin-bottom: 2rem; color: #444;">
+      Your <strong>$750 Costco Shop Card</strong> is ready for a resident in <span class="dynamic-city">your area</span>.
+    </p>
+
+    <div class="steps-container">
+      <img src="costco_750_US.webp" alt="Promotion Image" class="steps-image">
+      
+      <span class="steps-header">Follow These Steps Claim Your Gift Card:</span>
+      
+      <ul class="steps-list">
+        <li>1.Click the button below</li>
+        <li>2.Enter your email & info</li>
+        <li>3.Complete 5 recommended deals</li>
+        <li>4.Claim Your $750 Gift Card</li>
+      </ul>
     </div>
-  </section>
+
+    <a href="https://trk.cmclk.com/cf/click/1" class="btn" style="display: inline-block; background-color: #e32b2b; color: white; padding: 18px 40px; text-decoration: none; border-radius: 5px; font-weight: bold; text-transform: uppercase; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+      Claim My Shop Card
+    </a>
+    
+  </div>
+</section>
+
 
   <div class="comments-container">
     <div style="font-weight: 800; border-bottom: 2px solid var(--costco-red); padding-bottom: 5px; margin-bottom: 15px;">Executive Member Feedback (9)</div>
